@@ -6,28 +6,31 @@ import csv
 page = requests.get('https://ktu.edu.in/eu/core/announcements.htm')
 soup = BeautifulSoup(page.content, 'html.parser')
 contents = soup.find(class_='c-details')
+items= contents.find_all('tr')
 
-date= [content.find(class_='news-date').get_text() for content in contents]
-print(date)
-"""
-table = contents.find('table')
-table_rows = table.find_all('tr')
-file = open('ktunotifications.csv', 'a+', newline ='\n')
+date = [item.find(class_='news-date').get_text() for item in items]
+maindata = []
+subdata = []
+i = 0
+while len(items)>i:
+    data = items[i].get_text().splitlines()
+    while ('' in data):
+        data.remove('')
+    maindata.append(data[3])
+    subdata.append(data[4:])
+    i = i+1
+while ('' in maindata):
+    maindata.remove('')
+while ('' in subdata):
+    subdata.remove()
 
-for tr in table_rows:
-    td = tr.find_all('td')
-    row.{i.text for i in td}
-    
-
-    #print(row)
-print(row)
-with file:     
-    write = csv.writer(file) 
-    write.writerows(row) 
-"""
+ktunotifications = pd.DataFrame(
+    {
+        'Date': date,
+        'notificatin': maindata,
+        'details': subdata,
+    })
 
 
-
-    
-
-    
+#print(weatherdata)
+ktunotifications.to_csv('ktunotifications.csv')
