@@ -5,6 +5,7 @@ import csv
 Url = 'https://www.whitehouse.gov/presidential-actions/page/'
 pgno = 1
 link = []
+path ='D:\New folder\out\witehousekeralanotifications.csv'
 while pgno<190:
     if pgno == 1:
         try:
@@ -39,4 +40,4 @@ whitehousenotifications = pd.DataFrame(
         'Data': link
     })
 
-whitehousenotifications.to_csv('whitehousekeralanotifications.csv')
+whitehousenotifications.to_csv(path)
