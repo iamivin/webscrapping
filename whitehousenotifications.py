@@ -5,8 +5,8 @@ import csv
 Url = 'https://www.whitehouse.gov/presidential-actions/page/'
 pgno = 1
 link = []
-path ='D:\New folder\out\witehousekeralanotifications.csv'
-while pgno<190:
+path ="D:\\New folder\out\witehousekeralanotifications.csv"
+while pgno<150:
     if pgno == 1:
         try:
             page = requests.get('https://www.whitehouse.gov/presidential-actions/')

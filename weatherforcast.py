@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-
+path = "D:\\New folder\out\weatherforcast.csv"
 page = requests.get('https://forecast.weather.gov/MapClick.php?CityName=Franconia&state=NH&site=GYX&lat=44.2269&lon=-71.7483#.X0NdHMgzZPY')
 soup = BeautifulSoup(page.content, 'html.parser')
 week = soup.find(id='seven-day-forecast-container')
@@ -32,5 +32,5 @@ weatherdata = pd.DataFrame(
 
 
 #print(weatherdata)
-weatherdata.to_csv('weatherforcast.csv')
+weatherdata.to_csv(path)
 

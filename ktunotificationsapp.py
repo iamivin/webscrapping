@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import csv
-
+path = "D:\\New folder\out\ktunotifications.csv"
 page = requests.get('https://ktu.edu.in/eu/core/announcements.htm')
 soup = BeautifulSoup(page.content, 'html.parser')
 contents = soup.find(class_='c-details')
@@ -33,4 +33,4 @@ ktunotifications = pd.DataFrame(
 
 
 #print(weatherdata)
-ktunotifications.to_csv('ktunotifications.csv')
+ktunotifications.to_csv(path)
